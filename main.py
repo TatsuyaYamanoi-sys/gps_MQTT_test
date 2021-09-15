@@ -51,12 +51,12 @@ print('UART ok')
 
 
 while True:        
-    if (uart1.any()):       #uart1に何かデータが入ったら（.any()）以下を実行
-        read_data = b''     #read_dataを空のbyte型data(b'')
-        gps_line = b''      #gps_line 変数
+    if (uart1.any()):       
+        read_data = b''     
+        gps_line = b''      
         while read_data != b'\n':       #read_dataに改行が入るまでループ
             read_data = uart1.read(1)       #UARTで1byteずつ読む(.read(1))
-            if(read_data):      #dataが入ったら以下を実行
+            if(read_data):     
                 gps_line += read_data       #gps_line配列に1byteずつ読んだデータを入れる
 
         if(gps_line[:6] == b'$GPRMC'):      #gps_line配列の6番目までが(gps_line[:6])$GPRMCであれば以下を実行
