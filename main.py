@@ -60,12 +60,12 @@ while True:
                 gps_line += read_data       #gps_line配列に1byteずつ読んだデータを入れる
 
         if(gps_line[:6] == b'$GPRMC'):      #gps_line配列の6番目までが(gps_line[:6])$GPRMCであれば以下を実行
-            gps_str = gps_line.decode('utf-8')      #split()ではbytes型が変換出来ない為、gps_strを作成。.decode('utf-8')でstr型に変換。
-            gps_parts = gps_str.split(',')      #split()でカンマ区切りの配列に変換
+            gps_str = gps_line.decode('utf-8')      #split()ではbytes型が変換出来ない為、.decode('utf-8')でstr型に変換。
+            gps_parts = gps_str.split(',')      
             uart2.write(gps_line)
 
             if(gps_parts[2] == 'A'):
-                latitude = gps_parts[3]     #配列3番目の緯度を変数に代入
+                latitude = gps_parts[3]     #配列3番目の緯度
                 longitude = gps_parts[5]    #配列5番目の経度
 
                 uart2.write(latitude)
