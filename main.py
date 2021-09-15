@@ -34,7 +34,7 @@ if not wifi :
 print('wifi ok')
 #======= MQTT =======#
 
-server = "192.168.1.148"
+server = "IP"
 
 c = MQTTClient("umqtt_client", server)
 c.connect()
